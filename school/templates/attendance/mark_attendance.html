@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Mark Attendance</title>
+</head>
+<body>
+    <h1>Mark Attendance</h1>
+    <form method="post">
+        {% csrf_token %}
+        <label for="date">Date:</label>
+        <input type="date" name="date">
+        <br><br>
+        {% for student in students %}
+            <div>
+                <label>{{ student.first_name }} {{ student.last_name }}:</label>
+                <select name="status_{{ student.id }}">
+                    <option value="P">Present</option>
+                    <option value="A">Absent</option>
+                    <option value="L">Leave</option>
+                </select>
+            </div>
+        {% endfor %}
+        <br><br>
+        <button type="submit">Submit</button>
+    </form>
+</body>
+</html>

@@ -1,0 +1,14 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Attendance List</title>
+</head>
+<body>
+    <h1>Attendance for {{ request.GET.date }}</h1>
+    <ul>
+        {% for attendance in attendances %}
+            <li>{{ attendance.first_name }} {{ attendance.student.last_name }}: {{ attendance.get_status_display }}</li>
+        {% endfor %}
+    </ul>
+</body>
+</html>
